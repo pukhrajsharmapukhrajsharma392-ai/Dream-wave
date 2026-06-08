@@ -1,0 +1,170 @@
+.bottom-player {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-top: 1px solid var(--panel-border);
+  z-index: 20;
+}
+
+.now-playing {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 30%;
+}
+
+.song-artwork {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #1f1f22, #2c2c35);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  background-size: cover;
+  background-position: center;
+}
+
+.player-controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  gap: 8px;
+}
+
+.player-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.play-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.progress-bar-bg {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--accent-purple);
+  border-radius: 2px;
+}
+
+.progress-bar-bg:hover .progress-bar-fill {
+  background: var(--accent-cyan);
+}
+
+.progress-bar-thumb {
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.progress-bar-bg:hover .progress-bar-thumb {
+  opacity: 1;
+}
+
+.player-options {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  width: 30%;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.volume-bar-bg {
+  width: 100px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.volume-bar-fill {
+  height: 100%;
+  background: white;
+  border-radius: 2px;
+}
+
+.volume-bar-bg:hover .volume-bar-fill {
+  background: var(--accent-cyan);
+}
+
+@media (max-width: 768px) {
+  .bottom-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    padding: 0 16px;
+    background: rgba(8, 8, 8, 0.95);
+    backdrop-filter: blur(10px);
+  }
+  .now-playing {
+    width: 50%;
+  }
+  .song-artwork {
+    width: 44px;
+    height: 44px;
+  }
+  .player-options {
+    display: none; /* Hide volume and extra buttons on mobile */
+  }
+  .player-controls-container {
+    width: 50%;
+  }
+  .progress-container {
+    display: none; /* Simplify mobile view by hiding precise progress bar */
+  }
+  .player-buttons {
+    gap: 12px;
+  }
+  .player-buttons .btn-icon:first-child,
+  .player-buttons .btn-icon:last-child {
+    display: none; /* Hide shuffle and repeat on mobile to save space */
+  }
+}

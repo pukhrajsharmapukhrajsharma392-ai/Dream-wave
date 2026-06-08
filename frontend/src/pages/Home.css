@@ -1,0 +1,162 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.hero-section {
+  border-radius: 16px;
+  padding: 48px;
+  min-height: 300px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2)), url('https://images.unsplash.com/photo-1614149162883-504ce4d13909?q=80&w=1000') no-repeat center/cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  z-index: 2;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+}
+
+.song-card {
+  min-width: 160px;
+  padding: 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.song-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-5px);
+}
+
+.card-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s;
+}
+
+.bg-gradient-purple { background: linear-gradient(135deg, var(--accent-purple), #4c1d95); }
+.bg-gradient-cyan { background: linear-gradient(135deg, var(--accent-cyan), #0891b2); }
+
+.play-overlay {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.song-card:hover .play-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.song-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.playlist-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.playlist-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.playlist-image {
+  width: 100%;
+  height: 140px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.artist-flex {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+}
+
+.artist-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #1f1f22, #3a3a45);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.artist-circle-card:hover .artist-avatar {
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 24px;
+    min-height: 220px;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .card-carousel {
+    gap: 12px;
+  }
+  .song-card {
+    min-width: 140px;
+    padding: 12px;
+  }
+}

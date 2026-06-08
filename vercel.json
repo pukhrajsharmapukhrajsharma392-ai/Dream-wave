@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    }
+  ],
+  "env": {
+    "MONGO_URI": "mongodb+srv://pukhraj_sharma4421:QpPxnUJKQ7mO25fr@cluster21.fxzshol.mongodb.net/dreamwave?retryWrites=true&w=majority",
+    "SUPABASE_URL": "https://ngqybxbhdezyfkhklmbh.supabase.co",
+    "SUPABASE_SERVICE_ROLE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ncXlieGJoZGV6eWZraGtsbWJoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDkyNTM0MSwiZXhwIjoyMDk2NTAxMzQxfQ.xh8fJAym04H8oSBPMFtrmP-A23gK0SMun4BOK6mO5M8",
+    "CLOUDINARY_CLOUD_NAME": "dnznx13qy",
+    "CLOUDINARY_API_KEY": "633291529451875",
+    "CLOUDINARY_API_SECRET": "YxzsK42KtS7j9q5llhILgT6scGQ"
+  },
+  "framework": "vite",
+  "outputDirectory": "frontend/dist"
+}
