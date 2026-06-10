@@ -1,8 +1,9 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Upload, Bell, Edit, LogOut } from 'lucide-react';
+import { Search, Upload, Bell, Edit, LogOut, Disc } from 'lucide-react';
 import { AuthContext } from '../contexts/AuthContext';
 import UploadModal from './UploadModal';
+import UploadAlbumModal from './UploadAlbumModal';
 import ProfileModal from './ProfileModal';
 import './TopNav.css';
 
@@ -10,6 +11,7 @@ const TopNav = () => {
   const navigate = useNavigate();
   const { user, token, logout } = useContext(AuthContext);
   const [showUploadModal, setShowUploadModal] = useState(false);
+  const [showUploadAlbumModal, setShowUploadAlbumModal] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -34,12 +36,22 @@ const TopNav = () => {
         </form>
         
         <div className="nav-actions">
-          <button 
-            className="btn btn-primary upload-btn" 
-            onClick={() => token ? setShowUploadModal(true) : navigate('/login')}
-          >
-            <Upload size={16} style={{marginRight: '8px'}}/> Upload Music
-          </button>
+          <div style={{display: 'flex', gap: '10px'}}>
+            <button 
+              className="btn btn-primary upload-btn" 
+              onClick={() => token ? setShowUploadModal(true) : navigate('/login')}
+              style={{padding: '8px 15px'}}
+            >
+              <Upload size={16} style={{marginRight: '8px'}}/> Track
+            </button>
+            <button 
+              className="btn btn-secondary upload-btn" 
+              onClick={() => token ? setShowUploadAlbumModal(true) : navigate('/login')}
+              style={{padding: '8px 15px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)'}}
+            >
+              <Disc size={16} style={{marginRight: '8px'}}/> Album
+            </button>
+          </div>
           
           {token ? (
             <>
@@ -67,6 +79,7 @@ const TopNav = () => {
       </div>
 
       {showUploadModal && <UploadModal onClose={() => setShowUploadModal(false)} />}
+      {showUploadAlbumModal && <UploadAlbumModal onClose={() => setShowUploadAlbumModal(false)} />}
       {showProfileModal && <ProfileModal onClose={() => setShowProfileModal(false)} />}
     </>
   );

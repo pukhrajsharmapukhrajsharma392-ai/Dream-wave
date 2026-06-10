@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+require("dotenv").config();
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/songs", require("./routes/songs"));
 app.use("/api/playlists", require("./routes/playlists"));
+app.use("/api/albums", require("./routes/albums"));
 
 // Health check
 app.get("/api/health", (req, res) => {

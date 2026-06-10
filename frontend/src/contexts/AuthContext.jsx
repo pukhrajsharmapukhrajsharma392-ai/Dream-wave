@@ -32,10 +32,10 @@ export const AuthProvider = ({ children }) => {
       const res = await axios.post('/api/auth/login', { email, password });
       setToken(res.data.token);
       setUser(res.data.user);
-      return true;
+      return { success: true };
     } catch (err) {
       console.error("Login Error:", err.response?.data?.message || err.message);
-      return false;
+      return { success: false, error: err.response?.data?.message || "Invalid email or password." };
     }
   };
 

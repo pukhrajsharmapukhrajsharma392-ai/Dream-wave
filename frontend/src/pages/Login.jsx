@@ -17,11 +17,11 @@ const Login = () => {
     setError('');
     setLoading(true);
     
-    const success = await login(email, password);
-    if (success) {
+    const result = await login(email, password);
+    if (result.success) {
       navigate('/');
     } else {
-      setError('Invalid email or password.');
+      setError(result.error);
       setLoading(false);
     }
   };

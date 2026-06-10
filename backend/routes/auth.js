@@ -23,6 +23,13 @@ router.post("/register", async (req, res) => {
 
     const user = data.user;
     if (user) {
+      // Auto-confirm the user's email to bypass email verification issues
+      try {
+        await supabase.auth.admin.updateUserById(user.id, { email_confirm: true });
+      } catch (adminErr) {
+        console.error("Error auto-confirming email:", adminErr);
+      }
+
       // Insert into our custom public.users table for profile info
       const { error: insertError } = await supabase.from('users').insert({
         id: user.id,
@@ -55,7 +62,7 @@ router.post("/login", async (req, res) => {
     });
 
     if (error) {
-      return res.status(400).json({ message: "Invalid Credentials" });
+      return res.status(400).json({ message: error.message });
     }
 
     const user = data.user;
